@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 public class C03_WindowHandles {
 
-
     DesiredCapabilities cap;
     WindowsDriver driver;
     Process process;
@@ -54,11 +53,7 @@ public class C03_WindowHandles {
         String windows = driver.getWindowHandles().iterator().next();
         driver.switchTo().window(windows).getTitle();
         System.out.println("driver.getTitle() = " + driver.getTitle());
-
-
-        driver.manage().timeouts().implicitlyWait(65,TimeUnit.SECONDS);
-        driver.findElementByXPath("//Button[@Name='Close']").click();
-        driver.findElementByAccessibilityId("cmdOk").click();
+        
 
 
     }
