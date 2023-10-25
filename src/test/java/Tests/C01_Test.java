@@ -31,24 +31,19 @@ public class C01_Test {
         }
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("app", "C:\\Ucms\\WDE - BaseModule\\InteractionWorkspace.exe");
+        capabilities.setCapability("app", "C:\\Ucms\\Ucs.Ucms26.Designer 2.6.144.3\\Ucs.Ucms26.Designer.exe");
 
         Thread.sleep(1000);
         WindowsDriver driver = new WindowsDriver(new URL("http://127.0.0.1:4723/"), capabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 
-        driver.findElement(By.xpath("/Window/Custom/Edit[1]")).clear();
-        driver.findElement(By.xpath("/Window/Custom/Edit[1]")).sendKeys("mehmet.demir");
-        driver.findElement(By.xpath("/Window/Custom/Edit[2]")).clear();
-        driver.findElement(By.xpath("/Window/Custom/Edit[2]")).sendKeys("x");
-        driver.findElement(By.xpath("/Window/Custom/Button[1]")).click();
+        driver.findElementByAccessibilityId("txtUserName").clear();
+        driver.findElementByAccessibilityId("txtUserName").sendKeys("can");
+        driver.findElementByAccessibilityId("txtPassword").clear();
+        driver.findElementByAccessibilityId("txtPassword").sendKeys("x");
+        driver.findElementByAccessibilityId("cmdLogin").click();
         Thread.sleep(10000);
-
-        driver.findElement(By.name("Hamburger Button")).click();
-        driver.findElement(By.name("My C_ampaigns")).click();
-        driver.findElement(By.name("Get Record")).click();
-
 
 
         /*

@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,9 +20,12 @@ public class C02_BeforeAfter {
     Process process;
     @Before
     public void setUp() throws IOException {
-        String winAppDriverServerPath = "C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe";
-        ProcessBuilder builder = new ProcessBuilder(winAppDriverServerPath).inheritIO();
-        process = builder.start();
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.open(new File("C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         cap = new DesiredCapabilities();
 
     }
@@ -39,11 +44,9 @@ public class C02_BeforeAfter {
 
     }
 
-
-
     @After
     public void tearDown(){
         //driver.quit();
-        process.destroy();
+
     }
 }
